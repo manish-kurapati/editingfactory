@@ -3,3 +3,5 @@ node_modules/
 out/
 *.tsbuildinfo
 .env*
+# Review uploads before adding them to the portfolio and source repository.
+public/videos/*.mp4
