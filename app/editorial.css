@@ -212,6 +212,23 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
 @media(max-width:700px){.v2-video-deck{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding:45px 18px 65px;margin:0 -18px;min-height:0}.v2-video-card,.v2-video-card:nth-child(even){width:min(77vw,340px);min-width:min(77vw,340px);margin:0 0 0 -14px;transform:rotate(-3deg) translateY(14px);scroll-snap-align:center}.v2-video-card:nth-child(even){transform:rotate(3deg) translateY(14px)}.v2-video-card:first-child{margin-left:7vw}.v2-video-card:last-child{margin-right:7vw}.v2-video-card.active,.v2-video-card:hover,.v2-video-card:nth-child(even).active,.v2-video-card:nth-child(even):hover{transform:rotate(0) translateY(-8px) scale(1.01)}.v2-video-heading p{font-size:15px}.v2-video-caption h3{font-size:26px}.v2-policy-sections>section{grid-template-columns:36px 1fr;gap:9px}.v2-policy-sections p{font-size:14px}.v2-policy-contact{padding:25px}}
 @media(prefers-reduced-motion:reduce){.v2-video-card{transition:none}}
 
+/* Full-bleed film wall: a seamless, slow loop of tall picture-only cards. */
+.v2-video-portfolio{overflow:hidden;padding-bottom:0}
+.v2-video-portfolio .v2-video-deck{display:block;width:100%;min-height:0;margin-top:48px;padding:26px 0 38px;overflow:hidden;background:#080606;perspective:none;scroll-snap-type:none}
+.v2-video-track{display:flex;width:max-content;animation:v2-film-drift 100s linear infinite;will-change:transform}
+.v2-video-deck:hover .v2-video-track,.v2-video-deck:focus-within .v2-video-track,.v2-video-deck:has(.v2-video-card.active) .v2-video-track{animation-play-state:paused}
+.v2-video-group{display:flex;align-items:center;gap:28px;padding-right:28px}
+.v2-video-group .v2-video-card,.v2-video-group .v2-video-card:nth-child(even),.v2-video-group .v2-video-card:nth-child(odd):not(:first-child){box-sizing:border-box;width:clamp(245px,18vw,330px);min-width:0;margin:0;padding:0;border:0;border-radius:23px;background:#171117;box-shadow:none;transform:rotate(-2deg);scroll-snap-align:none}
+.v2-video-group .v2-video-card:nth-child(3n+2){transform:rotate(2deg) translateY(8px)}
+.v2-video-group .v2-video-card:nth-child(3n){transform:rotate(-.7deg) translateY(-5px)}
+.v2-video-group .v2-video-card:hover,.v2-video-group .v2-video-card.active,.v2-video-group .v2-video-card:nth-child(even):hover,.v2-video-group .v2-video-card:nth-child(even).active{z-index:5;transform:rotate(0) translateY(-12px) scale(1.035);box-shadow:0 20px 50px #0009}
+.v2-video-group .v2-video-frame{aspect-ratio:9/16;border-radius:23px}
+.v2-video-group .v2-video-play{opacity:0;transition:opacity .25s,transform .25s}
+.v2-video-group .v2-video-card:hover .v2-video-play,.v2-video-group .v2-video-card:focus-within .v2-video-play{opacity:1}
+@keyframes v2-film-drift{to{transform:translateX(-50%)}}
+@media(max-width:700px){.v2-video-portfolio .v2-video-deck{margin-top:35px;padding:24px 0 32px}.v2-video-track{animation-duration:78s}.v2-video-group{gap:17px;padding-right:17px}.v2-video-group .v2-video-card,.v2-video-group .v2-video-card:nth-child(even),.v2-video-group .v2-video-card:nth-child(odd):not(:first-child){width:56vw;min-width:56vw;margin:0}.v2-video-group .v2-video-play{opacity:1;width:50px;height:50px}}
+@media(prefers-reduced-motion:reduce){.v2-video-track{animation:none}.v2-video-portfolio .v2-video-deck{overflow-x:auto}}
+
 /* A single icon-and-arrow path for the brief-to-delivery process. */
 .v2-workflow-line{display:flex;align-items:flex-start;gap:0;overflow-x:auto;scroll-snap-type:x proximity;padding:25px 0 30px;scrollbar-color:#bb9fbb transparent}
 .v2-workflow-step{position:relative;flex:1;min-width:205px;padding:0 35px 0 6px;scroll-snap-align:start}

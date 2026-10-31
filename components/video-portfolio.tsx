@@ -22,6 +22,8 @@ function VideoCard({ video }: { video: typeof portfolioVideos[number] }) {
 export function VideoPortfolio() {
   return <section className="v2-section v2-lavender v2-video-portfolio"><div className="v2-container">
     <div className="v2-video-heading"><span>THE WORK / REAL FILMS</span><h2>Stories with<br/><em>something to show.</em></h2><p>Hover over a card to watch. On a phone, tap Play. More vertical and horizontal films can join the deck as they are supplied.</p></div>
-    <div className="v2-video-deck">{portfolioVideos.map(video => <VideoCard key={video.src} video={video}/>)}</div>
-  </div></section>;
+  </div><div className="v2-video-deck"><div className="v2-video-track">
+    <div className="v2-video-group">{portfolioVideos.map(video => <VideoCard key={video.src} video={video}/>)}</div>
+    <div className="v2-video-group" aria-hidden="true" inert>{portfolioVideos.map(video => <VideoCard key={`copy-${video.src}`} video={video}/>)}</div>
+  </div></div></section>;
 }
