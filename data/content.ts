@@ -1,14 +1,17 @@
 export const services = [
-  { title: "Event Editing", tag: "For the moments that matter", description: "Turn event footage into focused highlights with pace, energy, and a clear sense of occasion.", tone: "peach", icon: "01" },
-  { title: "Reels & Shorts", tag: "Made to hold attention", description: "Compact edits with strong openings, clean captions, and a rhythm built for short-form viewing.", tone: "lavender", icon: "02" },
-  { title: "16:9 Video Editing", tag: "Room for the whole story", description: "Landscape films for websites, presentations, YouTube, and campaigns.", tone: "yellow", icon: "03" },
-  { title: "9:16 Vertical Editing", tag: "Designed for the feed", description: "Vertical-first framing and pacing for reels, stories, shorts, and mobile campaigns.", tone: "lavender", icon: "04" },
-  { title: "Long-Form Editing", tag: "Structure with staying power", description: "Thoughtful narrative shaping for interviews, documentaries, corporate films, and longer projects.", tone: "peach", icon: "05" },
-  { title: "Custom Packages", tag: "Built around your brief", description: "A tailored scope for unusual formats, ongoing work, advanced graphics, or complete production.", tone: "yellow", icon: "06" },
+  { title: "Complete Video Production", tag: "From concept to final frame", description: "Concepts, scripting, shooting and finishing for corporate films, ads, documentaries and promotions.", image: "production.jpg", list: ["Creative concept and scripting", "Shoot planning and filming", "Editing, sound and delivery"] },
+  { title: "Coffee Table Books & Print Design", tag: "Stories you can hold", description: "Content and design for coffee table books, annual reports, brochures and catalogues.", image: "print-design.jpg", list: ["Editorial content development", "Book and publication design", "Print-ready production files"] },
+  { title: "AI Video Production", tag: "New tools, human direction", description: "AI-assisted visuals, animation and video for brand stories, product launches and campaigns.", image: "ai-video.jpg", list: ["Visual concept development", "AI-assisted animation", "Creative review and finishing"] },
+  { title: "Influencer Marketing", tag: "The right voices", description: "Creator identification, collaborations and coordinated campaigns that connect with relevant audiences.", image: "influencer.jpg", list: ["Creator discovery", "Collaboration planning", "Campaign coordination"] },
+  { title: "Social Media Promotions", tag: "Made to travel", description: "Campaign creatives, promotional content and paid social support for awareness and enquiries.", image: "social.jpg", list: ["Platform-ready creative", "Promotional video and posts", "Campaign planning"] },
+  { title: "Media Buying", tag: "Place the story well", description: "Media planning and placement across digital, TV, print, radio, cinema and outdoor channels.", image: "media-buying.jpg", list: ["Audience and channel planning", "Placement coordination", "Budget-led recommendations"] },
+  { title: "Drone", tag: "A new point of view", description: "Aerial coverage that gives events, places, properties and campaigns a wider perspective.", image: "drone.jpg", list: ["Aerial shot planning", "Location and event coverage", "Footage for the final edit"] },
+  { title: "Photography", tag: "The decisive frame", description: "Purposeful imagery for events, portraits, products and brand campaigns.", image: "photography.jpg", list: ["Event and brand coverage", "Portraits and products", "Edited image delivery"] },
+  { title: "Videography", tag: "Capture with intention", description: "Professional camera coverage for interviews, events, products and promotional stories.", image: "videography.jpg", list: ["Shoot planning", "On-location filming", "Footage prepared for editing"] },
 ];
 export const packages = [
   {
-    name: "Factory Cut", eyebrow: "Essential editing", price: "₹9,999", unit: "for 8 videos",
+    name: "Factory Cut", eyebrow: "Essential editing", price: "â‚¹9,999", unit: "for 8 videos",
     intro: "Clean edits. Clear stories.", featured: false,
     features: [
       "Eight videos, up to 60 seconds each",
@@ -21,7 +24,7 @@ export const packages = [
     ],
   },
   {
-    name: "Factory Craft", eyebrow: "Branded editing", price: "₹15,999", unit: "for 8 videos",
+    name: "Factory Craft", eyebrow: "Branded editing", price: "â‚¹15,999", unit: "for 8 videos",
     intro: "Your footage. Your brand. More impact.", featured: true,
     features: [
       "Eight videos, up to 60 seconds each",
@@ -35,7 +38,7 @@ export const packages = [
     ],
   },
   {
-    name: "Factory Dedicated", eyebrow: "Monthly editing partner", price: "₹34,999", unit: "per month · up to 80 hours",
+    name: "Factory Dedicated", eyebrow: "Monthly editing partner", price: "â‚¹34,999", unit: "per month Â· up to 80 hours",
     intro: "An assigned editor working remotely from our studio.", featured: false,
     features: [
       "Ongoing editing, captions, colour and audio cleanup, and basic branded graphics",
@@ -58,10 +61,10 @@ export const packages = [
     ],
   },
   {
-    name: "Factory On-Site", eyebrow: "Event editing team", price: "From ₹5,999", unit: "per day · two editors",
+    name: "Factory On-Site", eyebrow: "Event editing team", price: "From â‚¹5,999", unit: "per day Â· two editors",
     intro: "Your event. Our editors. Content on the spot.", featured: false,
     features: [
-      "Two editors with laptops ₹5,999/day; three ₹8,999/day; four ₹11,999/day",
+      "Two editors with laptops â‚¹5,999/day; three â‚¹8,999/day; four â‚¹11,999/day",
       "Minimum booking of two editors; up to eight on-site hours per day",
       "Reels up to 60 seconds; 3, 5 or 10 minute highlights by agreement",
       "Footage is supplied by your shoot team; output follows an agreed schedule",
@@ -70,10 +73,10 @@ export const packages = [
     ],
   },
   {
-    name: "First Cut", eyebrow: "Single-video trial", price: "From ₹1,499", unit: "per video",
+    name: "First Cut", eyebrow: "Single-video trial", price: "From â‚¹1,499", unit: "per video",
     intro: "Start with one. Experience the difference.", featured: false,
     features: [
-      "One Factory Cut video ₹1,499 or Factory Craft video ₹2,499",
+      "One Factory Cut video â‚¹1,499 or Factory Craft video â‚¹2,499",
       "One video up to 60 seconds; 3, 5 or 10 minute edits quoted separately",
       "Corresponding Factory Cut or Factory Craft editing scope",
       "Up to 10 minutes of source footage",
