@@ -17,4 +17,4 @@ The production build is a static export: `npm run build` writes `out/`.
 - The supplied logo is in `public/logos/editing-factory.png` and used across the site.
 - The Adobe product icon PNGs in `public/logos` were converted from Adobe-hosted SVG assets.
 - Replace portfolio preview spaces with approved project videos when they are supplied.
-- Add a business contact address or endpoint before enabling direct form submission.
+- The Contact form opens WhatsApp with a prefilled project enquiry to +91 95055 55277. The visitor reviews and sends the message in WhatsApp.
