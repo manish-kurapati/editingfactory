@@ -7,12 +7,79 @@ export const services = [
   { title: "Custom Packages", tag: "Built around your brief", description: "A tailored scope for unusual formats, ongoing work, advanced graphics, or complete production.", tone: "yellow", icon: "06" },
 ];
 export const packages = [
-  { name:"Factory Cut", eyebrow:"Essential editing", price:"₹9,999", unit:"for 8 videos", intro:"Clean edits. Clear stories.", features:["Up to 60 seconds per video", "Clean cuts, engaging pacing and captions", "Basic colour correction and audio cleanup", "Supplied logo placement", "Up to 10 minutes of source footage per video", "One horizontal or vertical format per video", "Three consolidated revision rounds"] },
-  { name:"Factory Craft", eyebrow:"Branded editing", price:"₹15,999", unit:"for 8 videos", intro:"Your footage. Your brand. More impact.", featured:true, features:["Everything in Factory Cut", "Animated titles and lower thirds", "Graphic callouts, text highlights and branded transitions", "Basic animation of your supplied logo", "One approved graphics style across the package", "Up to 10 minutes of source footage per video", "Three consolidated revision rounds"] },
-  { name:"Factory Dedicated", eyebrow:"Monthly editing partner", price:"₹34,999", unit:"per month · up to 80 hours", intro:"A dedicated editor working remotely from our studio.", features:["Ongoing editing, captions and basic branded graphics", "Basic colour correction and audio cleanup", "Video lengths up to 60 seconds, 3, 5 or 10 minutes", "Footage preparation, revisions and exports count toward hours", "Priorities and delivery schedule agreed in advance"] },
-];
-export const morePackages = [
-  {name:"Factory Originals", label:"Concept. Shoot. Edit.", price:"Custom project quote", detail:"Complete production support from concept and scripting through shooting, editing, colour, sound and motion graphics."},
-  {name:"Factory On-Site", label:"Your event. Our editors.", price:"From ₹5,999 / day", detail:"Two editors ₹5,999/day, three ₹8,999/day, or four ₹11,999/day. Up to eight on-site hours; footage is supplied by your shoot team."},
-  {name:"First Cut", label:"Start with one.", price:"From ₹1,499 / video", detail:"One video up to 60 seconds: Factory Cut ₹1,499 or Factory Craft ₹2,499. Try one paid edit before choosing a larger package."},
+  {
+    name: "Factory Cut", eyebrow: "Essential editing", price: "₹9,999", unit: "for 8 videos",
+    intro: "Clean edits. Clear stories.", featured: false,
+    features: [
+      "Eight videos, up to 60 seconds each",
+      "Clean cuts, engaging pacing and captions",
+      "Basic colour correction, audio cleanup and supplied logo placement",
+      "Up to 10 minutes of source footage per video",
+      "One horizontal or vertical format per video",
+      "Three consolidated revision rounds per video",
+      "Longer 3, 5 or 10 minute edits quoted separately",
+    ],
+  },
+  {
+    name: "Factory Craft", eyebrow: "Branded editing", price: "₹15,999", unit: "for 8 videos",
+    intro: "Your footage. Your brand. More impact.", featured: true,
+    features: [
+      "Eight videos, up to 60 seconds each",
+      "Everything in Factory Cut",
+      "Animated titles, lower thirds and graphic callouts",
+      "Text highlights, branded transitions and basic supplied-logo animation",
+      "One approved graphics style across the package",
+      "Up to 10 minutes of source footage per video; one format each",
+      "Three consolidated revision rounds per video",
+      "Longer edits, bespoke animation, 3D and complex compositing quoted separately",
+    ],
+  },
+  {
+    name: "Factory Dedicated", eyebrow: "Monthly editing partner", price: "₹34,999", unit: "per month · up to 80 hours",
+    intro: "An assigned editor working remotely from our studio.", featured: false,
+    features: [
+      "Ongoing editing, captions, colour and audio cleanup, and basic branded graphics",
+      "Videos up to 60 seconds, 3, 5 or 10 minutes; longer projects accepted",
+      "Footage preparation, editing, graphics, revisions and exports count toward 80 hours",
+      "Video quantity depends on duration and complexity",
+      "Working days, priorities and delivery schedule agreed in advance",
+      "Additional hours, advanced animation and on-site work quoted separately",
+    ],
+  },
+  {
+    name: "Factory Originals", eyebrow: "Complete production", price: "Custom quote", unit: "per project",
+    intro: "Concept. Shoot. Edit.", featured: false,
+    features: [
+      "Concept development, scripting and pre-production",
+      "Shooting, editing, colour, sound and motion graphics",
+      "Videos up to 60 seconds, 3, 5 or 10 minutes; longer films available",
+      "For promotions, corporate films, testimonials, events and documentaries",
+      "Quotation specifies shoot needs, durations, deliverables, revisions and deadlines",
+    ],
+  },
+  {
+    name: "Factory On-Site", eyebrow: "Event editing team", price: "From ₹5,999", unit: "per day · two editors",
+    intro: "Your event. Our editors. Content on the spot.", featured: false,
+    features: [
+      "Two editors with laptops ₹5,999/day; three ₹8,999/day; four ₹11,999/day",
+      "Minimum booking of two editors; up to eight on-site hours per day",
+      "Reels up to 60 seconds; 3, 5 or 10 minute highlights by agreement",
+      "Footage is supplied by your shoot team; output follows an agreed schedule",
+      "Client provides organised footage, one approval contact, workspace and power",
+      "Shooting, travel, accommodation, overtime and extra formats quoted separately",
+    ],
+  },
+  {
+    name: "First Cut", eyebrow: "Single-video trial", price: "From ₹1,499", unit: "per video",
+    intro: "Start with one. Experience the difference.", featured: false,
+    features: [
+      "One Factory Cut video ₹1,499 or Factory Craft video ₹2,499",
+      "One video up to 60 seconds; 3, 5 or 10 minute edits quoted separately",
+      "Corresponding Factory Cut or Factory Craft editing scope",
+      "Up to 10 minutes of source footage",
+      "One horizontal or vertical format",
+      "Three consolidated revision rounds",
+      "A paid trial before choosing a larger package",
+    ],
+  },
 ];
