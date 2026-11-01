@@ -33,6 +33,9 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
 .v2-contact-whatsapp:hover{transform:translateY(-3px);background:#12583f}
 .v2-contact-number{font-size:13px!important;font-weight:700;color:#176d4f!important;margin:12px 0 0}
 .v2-footer-whatsapp{display:inline-block;margin-top:22px;color:#176d4f;font-weight:800}
+.v2-footer-socials{display:flex;align-items:center;gap:10px;margin-top:24px}
+.v2-footer-main .v2-footer-socials a{display:grid;place-items:center;width:43px;height:43px;border:1px solid #bda9c5;border-radius:50%;color:#4f365d;transition:transform .3s,background .3s,color .3s,border-color .3s}
+.v2-footer-main .v2-footer-socials a:hover{transform:translateY(-3px);background:#4f365d;border-color:#4f365d;color:#fff}
 .v2-form-note{line-height:1.6}
 
 /* Denser editorial details carry the brand between photo-led sections. */
