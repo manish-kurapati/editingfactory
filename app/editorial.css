@@ -215,7 +215,7 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
 /* A quiet, centered fan of vertical films with the outer cards beyond the viewport. */
 .v2-video-portfolio{overflow:hidden;padding-bottom:0}
 .v2-video-portfolio .v2-video-deck{--drift-offset:10vw;display:block;width:100%;min-height:0;margin-top:48px;padding:28px 0 48px;overflow:hidden;background:transparent;perspective:none;scroll-snap-type:none}
-.v2-video-track{display:flex;width:max-content;animation:v2-film-drift-right 90s linear infinite;will-change:transform}
+.v2-video-track{display:flex;width:max-content;animation:v2-film-drift-right 42s linear infinite;will-change:transform}
 .v2-video-group{display:flex;align-items:flex-start;gap:36px;padding-right:36px}
 .v2-video-group .v2-video-card,.v2-video-group .v2-video-card:nth-child(even),.v2-video-group .v2-video-card:nth-child(odd):not(:first-child){box-sizing:border-box;width:clamp(255px,17vw,330px);min-width:0;margin:0;padding:0;border:0;border-radius:20px;background:transparent;box-shadow:none;transform:translateY(var(--arc-y,0px)) rotate(var(--arc-rotation,0deg));scroll-snap-align:none}
 .v2-video-group .v2-video-card:nth-child(1){--arc-y:27px;--arc-rotation:-5deg}
@@ -227,7 +227,7 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
 .v2-video-group .v2-video-card:hover,.v2-video-group .v2-video-card.active,.v2-video-group .v2-video-card:nth-child(even):hover,.v2-video-group .v2-video-card:nth-child(even).active{z-index:5;transform:translateY(var(--arc-y,0px)) rotate(var(--arc-rotation,0deg));scale:1.015;box-shadow:0 12px 30px #24142b33}
 .v2-video-group .v2-video-frame{aspect-ratio:9/16;border-radius:20px;background:transparent}
 @keyframes v2-film-drift-right{from{transform:translateX(calc(-50% - var(--drift-offset)))}to{transform:translateX(calc(0px - var(--drift-offset)))}}
-@media(max-width:700px){.v2-video-portfolio .v2-video-deck{--drift-offset:14vw;margin-top:35px;padding:24px 0 44px}.v2-video-track{animation-duration:65s}.v2-video-group{gap:17px;padding-right:17px}.v2-video-group .v2-video-card,.v2-video-group .v2-video-card:nth-child(even),.v2-video-group .v2-video-card:nth-child(odd):not(:first-child){width:56vw;min-width:56vw;margin:0}.v2-video-group .v2-video-card:nth-child(1),.v2-video-group .v2-video-card:nth-child(6){--arc-y:18px}.v2-video-group .v2-video-card:nth-child(2),.v2-video-group .v2-video-card:nth-child(5){--arc-y:8px}}
+@media(max-width:700px){.v2-video-portfolio .v2-video-deck{--drift-offset:14vw;margin-top:35px;padding:24px 0 44px}.v2-video-track{animation-duration:36s}.v2-video-group{gap:17px;padding-right:17px}.v2-video-group .v2-video-card,.v2-video-group .v2-video-card:nth-child(even),.v2-video-group .v2-video-card:nth-child(odd):not(:first-child){width:56vw;min-width:56vw;margin:0}.v2-video-group .v2-video-card:nth-child(1),.v2-video-group .v2-video-card:nth-child(6){--arc-y:18px}.v2-video-group .v2-video-card:nth-child(2),.v2-video-group .v2-video-card:nth-child(5){--arc-y:8px}}
 @media(prefers-reduced-motion:reduce){.v2-video-track{animation:none;will-change:auto}.v2-video-portfolio .v2-video-deck{overflow-x:auto}.v2-video-group[aria-hidden="true"]{display:none}}
 
 /* A single icon-and-arrow path for the brief-to-delivery process. */
