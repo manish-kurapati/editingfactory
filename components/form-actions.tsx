@@ -20,8 +20,8 @@ export function FormActionsProvider({ children }: { children: React.ReactNode })
     {children}
     <dialog ref={dialog} className="v2-action-dialog" aria-label={form === "editor" ? "Editor application" : "Project enquiry"} onCancel={() => setForm(null)} onClick={event => { if (event.target === dialog.current) setForm(null); }}>
       <div className="v2-action-dialog-inner">
-        <button type="button" className="v2-dialog-close" onClick={() => setForm(null)} aria-label="Close form"><X size={22}/></button>
-        {form === "editor" ? <EditorForm/> : form === "client" ? <ClientForm/> : null}
+        <div className="v2-action-dialog-head"><div><span>{form === "editor" ? "JOIN THE TEAM" : "START A PROJECT"}</span><h2>{form === "editor" ? "Become an Editor" : "Book an Enquiry"}</h2></div><button type="button" className="v2-dialog-close" onClick={() => setForm(null)} aria-label="Close form"><X size={22}/></button></div>
+        <div className="v2-action-dialog-scroll">{form === "editor" ? <EditorForm/> : form === "client" ? <ClientForm/> : null}</div>
       </div>
     </dialog>
   </FormContext.Provider>;
