@@ -34,7 +34,7 @@ const pageHero: Record<Exclude<Page, "home">, { no: string; tag: string; title: 
   files: { no: "11", tag: "FILE HANDLING", title: <>Your files.<br/><em>Handled with care.</em></>, copy: "Transfer, delivery and the ten-day retention period.", image: "/images/service-6.png", alt: "Creative team planning work" },
 };
 function Brand() { return <Image className="v2-brand" src="/logos/editing-factory.png" width={220} height={220} alt="Editing Factory" priority />; }
-function CtaLink({ href, children, outline = false }: { href: string; children: React.ReactNode; outline?: boolean }) { const className = `v2-button ${outline ? "v2-button-outline" : ""}`; return href === "/contact/" ? <FormActionButton kind="client" className={className}>{children}<ArrowDownRight size={19}/></FormActionButton> : <Link href={href === "/packages/" ? "/#packages" : href} className={className}>{children}<ArrowDownRight size={19}/></Link>; }
+function CtaLink({ href, children, outline = false }: { href: string; children: React.ReactNode; outline?: boolean }) { const className = `v2-button ${outline ? "v2-button-outline" : ""}`; return href === "/contact/" ? <FormActionButton kind="client" className={className}>{children}<ArrowDownRight size={19}/></FormActionButton> : <Link href={href === "/packages/" ? "/packages/#package-collection" : href} className={className}>{children}<ArrowDownRight size={19}/></Link>; }
 function Kicker({ children }: { children: React.ReactNode }) { return <span className="v2-kicker"><i />{children}</span>; }
 function Wave({ from, to }: { from: Tone; to: Tone }) { return <div className={`v2-wave v2-${from}`} aria-hidden="true"><svg viewBox="0 0 1440 92" preserveAspectRatio="none"><path className={`v2-fill-${to}`} d="M0,42 C187,100 352,-6 545,48 C738,102 890,-8 1080,48 C1238,92 1334,66 1440,26 L1440,92 L0,92 Z" /></svg></div>; }
 function Heading({ label, title, copy }: { label: string; title: React.ReactNode; copy?: string }) { return <motion.div {...reveal} className="v2-heading"><div><Kicker>{label}</Kicker><h2>{title}</h2></div>{copy && <p>{copy}</p>}</motion.div>; }
@@ -70,7 +70,7 @@ function HomePackages() {
           <div className="v2-home-package-body"><span>{p.eyebrow}</span><h3>{p.name}</h3><p>{p.intro}</p><div><strong>{p.price}</strong><small>{p.unit}</small></div><ul>{p.features.map(feature => <li key={feature}><Check size={15}/>{feature}</li>)}</ul><FormActionButton kind="client" className="v2-home-package-action">Discuss this package <ArrowDownRight size={18}/></FormActionButton></div>
         </motion.article>)}
       </div>
-      <div className="v2-section-foot"><p>Every package follows a clear brief, with extra formats and longer edits scoped before work begins.</p><Link href="/packages/">Read the full package details <ArrowRight size={18}/></Link></div>
+      <div className="v2-section-foot"><p>Every package follows a clear brief, with extra formats and longer edits scoped before work begins.</p><Link href="/packages/#package-collection">Read the full package details <ArrowRight size={18}/></Link></div>
     </div>
   </section>;
 }
@@ -106,7 +106,7 @@ function Work({ full = false }: { full?: boolean }) { return <section className=
 const workflowIcons = [FileText, FolderUp, ReceiptText, CalendarDays, Clapperboard, MessageSquare, Send];
 function WorkflowList() { return <div className="v2-workflow-grid">{workflow.map((step, i) => { const Icon = workflowIcons[i]; return <div className="v2-workflow-step" key={step.title}><div className="v2-workflow-icon"><Icon size={29} strokeWidth={1.4}/></div><span>{String(i + 1).padStart(2, "0")} / 07</span><h3>{step.title}</h3><p>{step.detail}</p></div>; })}</div>; }
 function ProcessBand() { return <section className="v2-section v2-ivory"><div className="v2-container"><Heading label="03 / HOW IT WORKS" title={<>One clear line<br/><em>from brief to screen.</em></>} copy="All seven milestones, from the first brief to final delivery."/><WorkflowList/><div className="v2-section-foot"><p>See every milestone, from quotation to final feedback.</p><Link href="/process/">How it works & FAQs <ArrowRight size={18}/></Link></div></div></section>; }
-function GoldInterlude() { return <section className="v2-gold-wrap v2-ivory"><div className="v2-container v2-gold-interlude"><span>THE EDITING FACTORY PROMISE / 05</span><h2>YOUR FOOTAGE.<br/><em>OUR OBSESSION.</em></h2><p>From a single first cut to a full production, we give every frame the attention it deserves.</p><Link href="/#packages">Find your package <ArrowDownRight size={19}/></Link><i aria-hidden="true"/></div></section>; }
+function GoldInterlude() { return <section className="v2-gold-wrap v2-ivory"><div className="v2-container v2-gold-interlude"><span>THE EDITING FACTORY PROMISE / 05</span><h2>YOUR FOOTAGE.<br/><em>OUR OBSESSION.</em></h2><p>From a single first cut to a full production, we give every frame the attention it deserves.</p><Link href="/packages/#package-collection">Find your package <ArrowDownRight size={19}/></Link><i aria-hidden="true"/></div></section>; }
 function Cta({ tone = "ivory", title = "Let’s make the next frame matter." }: { tone?: Tone; title?: string }) { return <section className={`v2-cta-wrap v2-${tone}`}><div className="v2-container"><motion.div {...reveal} className="v2-cta"><div><Kicker>YOUR STORY STARTS HERE</Kicker><h2>{title}</h2><p>Bring us the idea, the footage or a blank page. We will help work out the right way forward.</p><CtaLink href="/contact/">Start a Conversation</CtaLink></div><div className="v2-cta-art" aria-hidden="true"><i/><i/><Clapperboard size={110} strokeWidth={.75}/></div></motion.div></div></section>; }
 function Home() { return <><HomeHero/><Wave from="ivory" to="lavender"/><WordTicker/><HomePackages/><Wave from="lavender" to="ivory"/><ScrollStudio/><ProcessBand/><GoldInterlude/><Wave from="ivory" to="lavender"/><TestimonialPreview/><Wave from="lavender" to="ivory"/><Cta/></>; }
 function InnerHero({ page }: { page: Exclude<Page, "home"> }) { const h = pageHero[page]; return <section className="v2-inner-hero"><div className="v2-inner-photo"><Image src={h.image} alt={h.alt} fill priority sizes="(max-width:800px) 100vw, 54vw"/></div><div className="v2-inner-shade"/><div className="v2-inner-content"><Kicker>{h.no} / {h.tag}</Kicker><h1>{h.title}</h1><p>{h.copy}</p><span>EDITING FACTORY &nbsp; ↘ &nbsp; {h.tag}</span></div><b aria-hidden="true">{h.no}</b></section>; }
@@ -126,7 +126,7 @@ function PackagesPage() {
   return <>
     <InnerHero page="packages"/>
     <Wave from="ivory" to="lavender"/>
-    <section className="v2-section v2-lavender">
+    <section id="package-collection" className="v2-section v2-lavender">
       <div className="v2-container">
         <Heading label="THE COMPLETE PACKAGE INDEX / 01–06" title={<>Six ways to make<br/><em>the work happen.</em></>} copy="Every Editing Factory package is here, from a single paid edit to an on-site team or a film produced from the first idea."/>
         <div className="v2-price-grid">
