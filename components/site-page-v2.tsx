@@ -54,6 +54,7 @@ function HomeHero() {
       <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .45, duration: .8 }}>From the first cut to the final frame, we turn your footage into video with clarity, feeling and purpose.</motion.p>
       <motion.div className="v2-hero-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .6 }}><CtaLink href="/packages/">Explore Packages</CtaLink><CtaLink href="/contact/" outline>Start a Project</CtaLink></motion.div>
     </motion.div>
+    <div className="v2-hero-tagline">YOU SHOOT. <strong>WE EDIT.</strong></div>
     <div className="v2-hero-meta"><span>EDITING FACTORY / FRAME BY FRAME</span><span>SCROLL TO EXPLORE <ArrowDown size={14}/></span></div><span className="v2-rec"><b/> REC &nbsp; 00:00:01:00</span>
   </section>;
 }
