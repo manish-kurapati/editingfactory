@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowDownRight, MessageCircle } from "lucide-react";
 import { packages, services } from "@/data/content";
+import { whatsappNumber } from "@/data/contact";
 
-const whatsapp = "919505555277";
 const field = (data: FormData, name: string) => data.getAll(name).map(String).filter(Boolean).join(", ");
 function sendToWhatsapp(data: FormData, heading: string) {
   const lines = Array.from(new Set(Array.from(data.keys()))).filter(key => key !== "consent").map(key => `${key}: ${field(data, key)}`).filter(line => !line.endsWith(": "));
-  window.location.assign(`https://wa.me/${whatsapp}?text=${encodeURIComponent(`${heading}\n\n${lines.join("\n")}`)}`);
+  window.location.assign(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`${heading}\n\n${lines.join("\n")}`)}`);
 }
 function Select({ label, name, options, required = false }: { label: string; name: string; options: string[]; required?: boolean }) {
   return <label>{label}<select name={name} required={required} defaultValue=""><option value="" disabled>Select one</option>{options.map(option => <option key={option}>{option}</option>)}</select></label>;
@@ -20,7 +20,7 @@ function Choices({ label, name, options }: { label: string; name: string; option
 
 export function ClientForm() {
   const [chosen, setChosen] = useState<string[]>([]);
-  const shooting = chosen.some(value => ["Photography", "Videography", "Drone", "Complete Video Production"].includes(value));
+  const shooting = chosen.some(value => ["Drone Videography and Photography", "Complete Video Production"].includes(value));
   const editing = chosen.some(value => /Editing|Video Production|AI Video/.test(value));
   function submit(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); sendToWhatsapp(new FormData(e.currentTarget), "Editing Factory — new project enquiry"); }
   return <form className="v2-form v2-brief-form" onSubmit={submit}>
