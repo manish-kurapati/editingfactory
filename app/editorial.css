@@ -366,6 +366,7 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
 .v2-form-step span{display:grid;place-items:center;flex:none;width:29px;height:29px;border-radius:50%;background:#eadcf1;color:#714692;font-size:11px;font-weight:800}
 .v2-form-step strong{font-size:14px;letter-spacing:-.01em}
 .v2-floating-actions .v2-floating-enquiry{background:#ffd000;color:#170b0c;box-shadow:0 0 15px #ffc90055}
+.v2-floating-enquiry .v2-whatsapp-logo{flex:none;color:#128c4f}
 @media(max-width:600px){.v2-action-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);border-radius:18px}.v2-action-dialog-inner{height:calc(100dvh - 16px);max-height:calc(100dvh - 16px)}.v2-action-dialog-head{padding:18px 20px}.v2-action-dialog-head h2{font-size:27px}.v2-action-dialog-scroll{padding:0 20px 24px}.v2-action-dialog .v2-form{padding:20px 0 0}.v2-action-dialog .v2-form-row{grid-template-columns:1fr}.v2-action-dialog .v2-choices{grid-template-columns:1fr 1fr}.v2-action-dialog .v2-choices label{font-size:11px;padding:9px}.v2-action-dialog .v2-form .v2-button{font-size:12px}}
 
 /* About page: editorial story, service index and closing statement. */
