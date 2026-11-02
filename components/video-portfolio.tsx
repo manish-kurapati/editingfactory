@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { portfolioVideos } from "@/data/portfolio-videos";
 
 const horizontalVideos = [
@@ -11,15 +14,34 @@ const horizontalVideos = [
 type Film = { readonly title: string; readonly src: string; readonly poster: string };
 
 function FilmCard({ film, duplicate = false }: { film: Film; duplicate?: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        void video.play().catch(() => undefined);
+      } else {
+        video.pause();
+      }
+    }, { rootMargin: "120px", threshold: .05 });
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return <article className="v2-scroll-film" aria-hidden={duplicate || undefined}>
     <video
+      ref={videoRef}
       src={film.src}
       poster={film.poster}
       autoPlay
       muted
       playsInline
       loop
-      preload="metadata"
+      preload="auto"
       tabIndex={duplicate ? -1 : 0}
       aria-label={duplicate ? undefined : `${film.title} portfolio video`}
     />

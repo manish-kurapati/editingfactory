@@ -48,9 +48,7 @@ export function CampaignLanding({ campaign }: { campaign: "NRI" | "Regional" }) 
           <Image src="/images/studio-hero.png" alt="Professional editor working at a studio workstation" fill priority sizes="100vw"/>
           <div className="campaign-hero-fade"/>
           <div className="campaign-hero-copy">
-            <span>EDITING FACTORY / YOUR STORY STARTS HERE</span>
             <h1>INDIA’S FIRST<small>ON-DEMAND EDITING STUDIO<br/>FOR <em>EVERY</em> STORY.</small></h1>
-            <p>From the first cut to the final frame, we turn your footage into video with clarity, feeling and purpose.</p>
             <BookButton className="campaign-book-light"/>
           </div>
         </section>

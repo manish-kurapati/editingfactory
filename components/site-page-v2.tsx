@@ -50,9 +50,7 @@ function HomeHero() {
     <motion.div className="v2-hero-photo" style={{ y: imageY }}><Image src="/images/studio-hero.png" alt="Editor shaping a film at a studio workstation with a cinema camera nearby" fill priority sizes="100vw"/></motion.div>
     <div className="v2-hero-shade"/>
     <motion.div className="v2-hero-copy" style={{ y: copyY }}>
-      <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1, duration: .7 }} className="v2-hero-eyebrow"><i/><span>EDITING FACTORY /</span> <b>YOUR STORY STARTS HERE</b></motion.div>
       <h1 className="v2-hero-headline"><span className="v2-mask"><motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: .15, duration: 1, ease: easing }}>INDIA’S FIRST</motion.span></span><span className="v2-hero-headline-sub">ON-DEMAND EDITING STUDIO<br/>FOR <em>EVERY</em> <mark>STORY.</mark></span></h1>
-      <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .45, duration: .8 }}>From the first cut to the final frame, we turn your footage into video with clarity, feeling and purpose.</motion.p>
       <motion.div className="v2-hero-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .6 }}><CtaLink href="/packages/">Explore Packages</CtaLink><CtaLink href="/contact/" outline>Start a Project</CtaLink></motion.div>
       <div className="v2-hero-tagline">YOU SHOOT. <strong>WE EDIT.</strong></div>
     </motion.div>
