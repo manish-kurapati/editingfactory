@@ -2,12 +2,12 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { ClientForm, EditorForm } from "@/components/brief-forms";
+import { ClientForm, CompactClientForm, EditorForm } from "@/components/brief-forms";
 
 type FormKind = "client" | "editor";
 const FormContext = createContext<(kind: FormKind) => void>(() => {});
 
-export function FormActionsProvider({ children }: { children: React.ReactNode }) {
+export function FormActionsProvider({ children, compactClientSource }: { children: React.ReactNode; compactClientSource?: string }) {
   const [form, setForm] = useState<FormKind | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -21,7 +21,7 @@ export function FormActionsProvider({ children }: { children: React.ReactNode })
     <dialog ref={dialog} className="v2-action-dialog" aria-label={form === "editor" ? "Editor application" : "Project enquiry"} onCancel={() => setForm(null)} onClick={event => { if (event.target === dialog.current) setForm(null); }}>
       <div className="v2-action-dialog-inner">
         <div className="v2-action-dialog-head"><div><span>{form === "editor" ? "JOIN THE TEAM" : "START A PROJECT"}</span><h2>{form === "editor" ? "Become an Editor" : "Book an Enquiry"}</h2></div><button type="button" className="v2-dialog-close" onClick={() => setForm(null)} aria-label="Close form"><X size={22}/></button></div>
-        <div className="v2-action-dialog-scroll">{form === "editor" ? <EditorForm/> : form === "client" ? <ClientForm/> : null}</div>
+        <div className="v2-action-dialog-scroll">{form === "editor" ? <EditorForm/> : form === "client" ? compactClientSource ? <CompactClientForm source={compactClientSource}/> : <ClientForm/> : null}</div>
       </div>
     </dialog>
   </FormContext.Provider>;

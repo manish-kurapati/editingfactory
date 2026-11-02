@@ -47,6 +47,26 @@ export function ClientForm() {
   </form>;
 }
 
+export function CompactClientForm({ source }: { source: string }) {
+  function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    data.set("Landing page", source);
+    sendToWhatsapp(data, "Editing Factory — landing page enquiry");
+  }
+  return <form className="v2-form v2-brief-form v2-compact-form" onSubmit={submit}>
+    <p>Share the essentials. We’ll continue the conversation on WhatsApp.</p>
+    <div className="v2-form-row">
+      <label>Full name *<input name="Full name" required autoComplete="name" placeholder="Your name"/></label>
+      <label>WhatsApp number *<input name="WhatsApp number" required type="tel" autoComplete="tel" placeholder="Include country code"/></label>
+    </div>
+    <Select label="What do you need? *" name="Service" required options={["Video editing", "Social media videos", "Corporate or brand film", "Event editing", "Complete video production", "Not sure yet"]}/>
+    <label>Tell us briefly about the project *<textarea name="Project brief" required rows={3} placeholder="Video type, quantity and preferred delivery date"/></label>
+    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I agree to be contacted about this enquiry and have read the <Link href="/privacy/">Privacy Policy</Link>.</span></label>
+    <button className="v2-button" type="submit">Continue on WhatsApp <MessageCircle size={18}/></button>
+  </form>;
+}
+
 export function EditorForm() {
   const [engagement, setEngagement] = useState<string[]>([]);
   function submit(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); sendToWhatsapp(new FormData(e.currentTarget), "Editing Factory — editor application"); }
