@@ -476,6 +476,25 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
 .v2-floating-actions a:last-child{background:#ffd000;color:#170b0c;box-shadow:0 0 15px #ffc90055}
 @media(max-width:820px){.v2-nav{height:64px}.v2-nav-logo{transform:translate(-50%,calc(-50% + 9px))}.v2-hero-shade{background:linear-gradient(90deg,#000e 0%,#000b 30%,#0006 50%,transparent 74%)}.v2-hero-copy{left:5%;right:5%;width:90%;top:25%;transform:none}.v2-hero h1.v2-hero-headline{font-size:clamp(52px,10vw,90px)}.v2-hero-headline-sub{font-size:clamp(26px,4.8vw,43px)}.v2-hero-tagline{bottom:110px}}
 @media(max-width:600px){.v2-header{top:28px}.v2-nav{height:64px}.v2-nav-logo{height:94px;transform:translate(-50%,calc(-50% + 8px))}.v2-nav .v2-brand{width:92px;height:92px}.v2-menu-button{width:44px;height:44px}.v2-hero-photo img{object-position:58% center;filter:saturate(1.08)}.v2-hero-copy{left:20px;right:20px;width:calc(100% - 40px);top:23%}.v2-hero-eyebrow{font-size:clamp(9px,2.65vw,12px);letter-spacing:.08em;gap:4px;white-space:nowrap}.v2-hero-eyebrow i{width:24px;margin-right:5px}.v2-hero h1.v2-hero-headline{font-size:clamp(45px,12vw,66px);margin:20px 0 16px}.v2-hero-headline-sub{font-size:clamp(24px,6.1vw,32px);margin-top:12px}.v2-hero-copy>p{font-size:15px;line-height:1.65;max-width:none}.v2-hero-actions{gap:9px;margin-top:27px}.v2-hero .v2-button{min-height:52px;gap:8px;padding:0 13px;font-size:11px;flex:1}.v2-hero-tagline{left:20px;right:20px;bottom:100px;font-size:clamp(21px,5.7vw,29px)}.v2-floating-actions{left:12px;right:12px;bottom:14px}.v2-floating-actions button,.v2-floating-actions a{font-size:11px;min-height:49px}}
+
+/* Internal pages begin below the floating navigation after their hero banners were removed. */
+.v2-inner-main>.v2-section:first-child,
+.v2-inner-main>.video-portfolio:first-child{padding-top:clamp(150px,14vw,190px)}
+
+/* A soft brand pulse keeps the logo visible without distracting from the work. */
+.v2-nav .v2-brand,.campaign-header>a{animation:v2-logo-glow 2.8s ease-in-out infinite;will-change:filter}
+@keyframes v2-logo-glow{
+  0%,100%{filter:drop-shadow(0 0 4px #c126ed88) drop-shadow(0 0 8px #ffd62955)}
+  50%{filter:drop-shadow(0 0 11px #d248f5) drop-shadow(0 0 21px #ffd629aa)}
+}
+
+.v2-contact-address,.v2-footer-address,.v2-policy-contact address{font-style:normal;line-height:1.6}
+.v2-contact-address{max-width:380px;margin:9px 0 0;color:var(--v2-muted);font-size:13px}
+.v2-footer-address{max-width:280px;margin-top:14px;color:#806c89;font-size:11px}
+.v2-policy-contact address{margin:8px 0 12px;font-weight:700}
+
+@media(prefers-reduced-motion:reduce){.v2-nav .v2-brand,.campaign-header>a{animation:none}}
+@media(max-width:600px){.v2-inner-main>.v2-section:first-child,.v2-inner-main>.video-portfolio:first-child{padding-top:135px}}
 @media(max-width:600px){.v2-hero-copy .v2-hero-tagline{margin-top:clamp(70px,14vh,125px)}}
 
 /* Clear, scrollable editor and enquiry forms. */

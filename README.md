@@ -18,7 +18,7 @@ The production build is a static export: `npm run build` writes `out/`.
 - The Adobe product icon PNGs in `public/logos` were converted from Adobe-hosted SVG assets. The DaVinci Resolve PNG was converted from [Blackmagic Design's press logo](https://www.blackmagicdesign.com/media/images/davinci-resolve-logo-square), and the Final Cut Pro PNG comes from [Apple's App Store listing](https://apps.apple.com/us/app/final-cut-pro/id424389933).
 - Package details in `data/content.ts` follow `Editing Factory Packages.docx`.
 - The portfolio plays six vertical reels listed in `data/portfolio-videos.ts`. Web-ready H.264 files live in `public/videos/portfolio/`, with matching poster frames in `public/videos/posters/`. Original uploads remain local and are ignored by Git; for future uploads, add only complete playable videos to the manifest and create a poster frame.
-- The four policy pages follow the supplied policy documents. Contact placeholders are replaced with the known WhatsApp number and an on-page note that email, grievance contact and business address details are still pending.
+- The four policy pages follow the supplied policy documents. Contact placeholders are replaced with the known WhatsApp number and Punjagutta business address; email and grievance contact details are still pending.
 - The client inquiry and editor application forms open WhatsApp with their answers addressed to +91 77997 77297. The visitor reviews and sends the message in WhatsApp. No form answers are stored by this static website.
 - The testimonial wall presents concise client-style feedback cards.
 - Nine unique generated service images live in `public/images/services/`; see `SERVICE_IMAGES.md` for the prompt set.

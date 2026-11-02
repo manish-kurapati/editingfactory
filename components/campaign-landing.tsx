@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowDownRight, Check, ExternalLink, MessageCircle } from "lucide-react";
 import { FormActionButton, FormActionsProvider } from "@/components/form-actions";
 import { TestimonialPreview } from "@/components/testimonial-preview";
-import { linkedinUrl, whatsappDisplay, whatsappUrl } from "@/data/contact";
+import { businessAddress, linkedinUrl, whatsappDisplay, whatsappUrl } from "@/data/contact";
 import { packages } from "@/data/content";
 
 const services = [
@@ -81,7 +81,7 @@ export function CampaignLanding({ campaign }: { campaign: "NRI" | "Regional" }) 
       <footer className="campaign-footer">
         <div><Image src="/logos/editing-factory.png" width={72} height={72} alt="Editing Factory"/><p>YOU SHOOT. <b>WE EDIT.</b></p></div>
         <div className="campaign-footer-links"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/> {whatsappDisplay}</a><a href={linkedinUrl} target="_blank" rel="noopener noreferrer"><ExternalLink size={18}/> LinkedIn</a><Link href="/privacy/">Privacy</Link><Link href="/terms/">Terms</Link></div>
-        <small>© {new Date().getFullYear()} Editing Factory · Moonlight Media Services Private Limited</small>
+        <small>© {new Date().getFullYear()} Editing Factory · Moonlight Media Services Private Limited · {businessAddress}</small>
       </footer>
     </div>
   </FormActionsProvider>;
