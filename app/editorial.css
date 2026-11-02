@@ -488,6 +488,17 @@ html{scroll-behavior:smooth}body{font-family:var(--v2-sans);background:var(--v2-
   50%{filter:drop-shadow(0 0 11px #d248f5) drop-shadow(0 0 21px #ffd629aa)}
 }
 
+/* Premium logo: orbiting gold/violet ring, expanding halo pulses, a periodic light sweep and a gentle breathing lift. */
+@property --v2-logo-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+.v2-nav-logo::before,.v2-nav-logo::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.v2-nav-logo::before{inset:-7px;padding:4px;background:conic-gradient(from var(--v2-logo-angle),#ffd629,#d248f5,#7b2cff,transparent 55%,#ffd629);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:v2-logo-orbit 3.2s linear infinite;filter:drop-shadow(0 0 6px #ffd629aa)}
+.v2-nav-logo::after{inset:0;background:linear-gradient(115deg,transparent 35%,#ffffffd9 50%,transparent 65%) -160% 0/250% 100% no-repeat;mix-blend-mode:overlay;animation:v2-logo-sweep 4.5s ease-in-out infinite}
+.v2-nav .v2-brand{animation:v2-logo-glow 2.8s ease-in-out infinite,v2-logo-breathe 5s ease-in-out infinite}
+@keyframes v2-logo-orbit{to{--v2-logo-angle:360deg}}
+@keyframes v2-logo-sweep{0%,55%{background-position:-160% 0}100%{background-position:260% 0}}
+@keyframes v2-logo-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@media(prefers-reduced-motion:reduce){.v2-nav-logo::before,.v2-nav-logo::after,.v2-nav .v2-brand{animation:none}}
+
 .v2-contact-address,.v2-footer-address,.v2-policy-contact address{font-style:normal;line-height:1.6}
 .v2-contact-address{max-width:380px;margin:9px 0 0;color:var(--v2-muted);font-size:13px}
 .v2-footer-address{max-width:280px;margin-top:14px;color:#806c89;font-size:11px}

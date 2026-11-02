@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react";
 import { portfolioVideos } from "@/data/portfolio-videos";
 
 const horizontalVideos = [
-  { title: "Film 01", src: "/videos/01.mp4", poster: "/videos/posters/horizontal-01.jpg" },
-  { title: "Film 02", src: "/videos/02.mp4", poster: "/videos/posters/horizontal-02.jpg" },
-  { title: "Film 03", src: "/videos/03.mp4", poster: "/videos/posters/horizontal-03.jpg" },
-  { title: "Film 04", src: "/videos/04.mp4", poster: "/videos/posters/horizontal-04.jpg" },
-  { title: "Film 05", src: "/videos/06.mp4", poster: "/videos/posters/horizontal-05.jpg" },
+  { title: "Film 01", src: "/videos/portfolio/01.mp4", poster: "/videos/posters/horizontal-01.jpg" },
+  { title: "Film 02", src: "/videos/portfolio/02.mp4", poster: "/videos/posters/horizontal-02.jpg" },
+  { title: "Film 03", src: "/videos/portfolio/03.mp4", poster: "/videos/posters/horizontal-03.jpg" },
+  { title: "Film 04", src: "/videos/portfolio/04.mp4", poster: "/videos/posters/horizontal-04.jpg" },
+  { title: "Film 05", src: "/videos/portfolio/06.mp4", poster: "/videos/posters/horizontal-05.jpg" },
 ] as const;
 
 type Film = { readonly title: string; readonly src: string; readonly poster: string };
