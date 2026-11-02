@@ -8,6 +8,7 @@ import { packages, services } from "@/data/content";
 import { ClientForm, EditorForm } from "@/components/brief-forms";
 import { TestimonialPreview } from "@/components/testimonial-preview";
 import { VideoPortfolio } from "@/components/video-portfolio";
+import { CameraGallery } from "@/components/camera-gallery";
 import { policies } from "@/data/policies";
 import { workflow } from "@/data/workflow";
 import { enquiryWhatsappUrl, whatsappUrl } from "@/data/contact";
@@ -117,6 +118,7 @@ function ServicesPage() {
       <div className="v2-directory">{services.map((s, i) => <motion.article {...reveal} key={s.title}>
         <div className="v2-directory-image"><Image src={`/images/services/${s.image}`} alt={`${s.title} creative production visual`} fill sizes="(max-width:800px) 100vw, 40vw"/><span>EF / {String(i + 1).padStart(2, "0")}</span></div>
         <div className="v2-directory-copy"><span>{String(i + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}</span><h3>{s.title}</h3><h4>{s.tag}</h4><p>{s.description}</p><ul>{s.list.map(x => <li key={x}><ArrowRight size={14}/>{x}</li>)}</ul><FormActionButton kind="client" className="v2-directory-action">Discuss this service <ArrowDownRight size={18}/></FormActionButton></div>
+        {s.title === "Complete Video Production" && <CameraGallery/>}
       </motion.article>)}</div>
     </div></section><Wave from="lavender" to="ivory"/>
     <section className="v2-section v2-ivory"><div className="v2-container"><Heading label="ONE CONNECTED BRIEF" title={<>Across every format,<br/><em>one clear direction.</em></>} copy="Production, design and promotion work best when the aim is clear. Tell us what you are making, where it will live and who it needs to reach."/><div className="v2-format-grid"><div><span>01 / CREATE</span><h3>Make the material.</h3><p>Film, photograph, design or develop the visual concept with a team matched to the brief.</p></div><div><span>02 / SHAPE & SHARE</span><h3>Give it a destination.</h3><p>Turn raw material into a finished story, then plan how it reaches the right audience.</p></div></div></div></section>
