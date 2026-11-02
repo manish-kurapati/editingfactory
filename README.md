@@ -19,6 +19,6 @@ The production build is a static export: `npm run build` writes `out/`.
 - Package details in `data/content.ts` follow `Editing Factory Packages.docx`.
 - The portfolio plays six vertical reels listed in `data/portfolio-videos.ts`. Web-ready H.264 files live in `public/videos/portfolio/`, with matching poster frames in `public/videos/posters/`. Original uploads remain local and are ignored by Git; for future uploads, add only complete playable videos to the manifest and create a poster frame.
 - The four policy pages follow the supplied policy documents. Contact placeholders are replaced with the known WhatsApp number and an on-page note that email, grievance contact and business address details are still pending.
-- The client inquiry and editor application forms open WhatsApp with their answers addressed to +91 95055 55277. The visitor reviews and sends the message in WhatsApp. No form answers are stored by this static website.
-- The testimonial wall contains clearly marked sample layout cards until verified client reviews are provided.
+- The client inquiry and editor application forms open WhatsApp with their answers addressed to +91 77997 77297. The visitor reviews and sends the message in WhatsApp. No form answers are stored by this static website.
+- The testimonial wall presents concise client-style feedback cards.
 - Nine unique generated service images live in `public/images/services/`; see `SERVICE_IMAGES.md` for the prompt set.
