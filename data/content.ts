@@ -5,7 +5,7 @@ export const services = [
   { title: "Influencer Marketing", tag: "The right voices", description: "Creator identification, collaborations and coordinated campaigns that connect with relevant audiences.", image: "influencer.jpg", list: ["Creator discovery", "Collaboration planning", "Campaign coordination"] },
   { title: "Social Media Promotions", tag: "Made to travel", description: "Campaign creatives, promotional content and paid social support for awareness and enquiries.", image: "social.jpg", list: ["Platform-ready creative", "Promotional video and posts", "Campaign planning"] },
   { title: "Media Buying", tag: "Place the story well", description: "Media planning and placement across digital, TV, print, radio, cinema and outdoor channels.", image: "media-buying.jpg", list: ["Audience and channel planning", "Placement coordination", "Budget-led recommendations"] },
-  { title: "Drone Videography and Photography", tag: "A complete point of view", description: "Aerial and on-location video and photography for events, places, products and brand campaigns.", image: "videography.jpg", list: ["Aerial shot planning and coverage", "On-location filming and photography", "Edited images and footage prepared for the final edit"] },
+  { title: "Drone Videography and Photography", tag: "A complete point of view", description: "Aerial and on-location video and photography for events, places, products and brand campaigns.", image: "drone.jpg", list: ["Aerial shot planning and coverage", "On-location filming and photography", "Edited images and footage prepared for the final edit"] },
 ];
 export const packages = [
   {
