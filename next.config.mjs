@@ -1,2 +1,2 @@
-const nextConfig = { output: "export", images: { unoptimized: true }, trailingSlash: true };
+const nextConfig = { images: { unoptimized: true }, trailingSlash: true };
 export default nextConfig;

@@ -19,6 +19,6 @@ The production build is a static export: `npm run build` writes `out/`.
 - Package details in `data/content.ts` follow `Editing Factory Packages.docx`.
 - The portfolio plays six vertical reels listed in `data/portfolio-videos.ts`. Web-ready H.264 files live in `public/videos/portfolio/`, with matching poster frames in `public/videos/posters/`. Original uploads remain local and are ignored by Git; for future uploads, add only complete playable videos to the manifest and create a poster frame.
 - The four policy pages follow the supplied policy documents. Contact placeholders are replaced with the known WhatsApp number and Punjagutta business address; email and grievance contact details are still pending.
-- The client inquiry and editor application forms open WhatsApp with their answers addressed to +91 77997 77297. The visitor reviews and sends the message in WhatsApp. No form answers are stored by this static website.
+- The client inquiry and editor application forms post to `/api/enquiry`, which sends the answers to WhatsApp (+91 96032 77277) through Whapi.Cloud without opening WhatsApp. Set `WHAPI_TOKEN`, `WHAPI_API_URL` and `WHAPI_TO` (see `.env.example`). The site now needs a Node host (static export is off). No answers are stored.
 - The testimonial wall presents concise client-style feedback cards.
 - Nine unique generated service images live in `public/images/services/`; see `SERVICE_IMAGES.md` for the prompt set.

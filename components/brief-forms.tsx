@@ -7,10 +7,29 @@ import { packages, services } from "@/data/content";
 import { whatsappNumber } from "@/data/contact";
 
 const field = (data: FormData, name: string) => data.getAll(name).map(String).filter(Boolean).join(", ");
-function sendToWhatsapp(data: FormData, heading: string) {
-  const lines = Array.from(new Set(Array.from(data.keys()))).filter(key => key !== "consent").map(key => `${key}: ${field(data, key)}`).filter(line => !line.endsWith(": "));
-  window.location.assign(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`${heading}\n\n${lines.join("\n")}`)}`);
+function useEnquiry(heading: string, extra?: Record<string, string>, kind: "client" | "editor" = "client") {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    Object.entries(extra ?? {}).forEach(([k, v]) => data.set(k, v));
+    const fields = Array.from(new Set(Array.from(data.keys()))).filter(key => key !== "consent" && key !== "website").map(key => [key, field(data, key)]);
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/enquiry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ heading, kind, fields, website: data.get("website") }) });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
+  const fallback = () => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(heading)}`;
+  const notice = status === "error" ? <p className="v2-form-note" role="alert">We could not send this right now. Please try again, or <a href={fallback()} target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.</p> : null;
+  return { status, submit, notice, sending: status === "sending", reset: () => setStatus("idle") };
 }
+const Honeypot = () => <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}/>;
 function Select({ label, name, options, required = false }: { label: string; name: string; options: string[]; required?: boolean }) {
   return <label>{label}<select name={name} required={required} defaultValue=""><option value="" disabled>Select one</option>{options.map(option => <option key={option}>{option}</option>)}</select></label>;
 }
@@ -18,12 +37,22 @@ function Choices({ label, name, options }: { label: string; name: string; option
   return <fieldset className="v2-choices"><legend>{label}</legend>{options.map(option => <label key={option}><input type="checkbox" name={name} value={option}/><span>{option}</span></label>)}</fieldset>;
 }
 
+function Thanks({ onReset, compact = false }: { onReset: () => void; compact?: boolean }) {
+  return <div className={`v2-form v2-brief-form v2-thanks${compact ? " v2-compact-form" : ""}`} role="status" style={{ textAlign: "center", padding: "40px 24px" }}>
+    <MessageCircle size={40} style={{ color: "#176d4f" }}/>
+    <h3 style={{ margin: "16px 0 8px", fontSize: 24 }}>Thank you!</h3>
+    <p>Your message has been sent to Editing Factory on WhatsApp. We will get back to you shortly.</p>
+    <button className="v2-button" type="button" onClick={onReset} style={{ marginTop: 16 }}>Send another</button>
+  </div>;
+}
+
 export function ClientForm() {
   const [chosen, setChosen] = useState<string[]>([]);
   const shooting = chosen.some(value => ["Drone Videography and Photography", "Complete Video Production"].includes(value));
   const editing = chosen.some(value => /Editing|Video Production|AI Video/.test(value));
-  function submit(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); sendToWhatsapp(new FormData(e.currentTarget), "Editing Factory — new project enquiry"); }
-  return <form className="v2-form v2-brief-form" onSubmit={submit}>
+  const { submit, notice, sending, status, reset } = useEnquiry("Editing Factory — new project enquiry");
+  if (status === "sent") return <Thanks onReset={() => { reset(); setChosen([]); }}/>;
+  return <form className="v2-form v2-brief-form" onSubmit={submit}><Honeypot/>
     <div className="v2-form-title"><span>BOOK AN INQUIRY</span><span>EF / CLIENT</span></div>
     <p>Tell us what you need. We’ll discuss the scope, price and schedule before any booking is confirmed.</p>
     <div className="v2-form-step"><span>01</span><strong>Your details</strong></div>
@@ -41,36 +70,33 @@ export function ClientForm() {
     <label>Tell us about the project *<textarea name="Project brief" required rows={5} placeholder="Message, audience, deliverables and useful references"/></label>
     <label>Reference video or brief link<input name="Reference link" type="url" placeholder="Optional"/></label>
     <div className="v2-form-step"><span>03</span><strong>Send your enquiry</strong></div>
-    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I have read the <Link href="/privacy/">Privacy Policy</Link> and agree to be contacted about this enquiry.</span></label>
-    <button className="v2-button" type="submit" disabled={chosen.length === 0}>Continue on WhatsApp <MessageCircle size={18}/></button>
-    <p className="v2-form-note">WhatsApp opens with your answers. Tap Send there to submit. This does not confirm a booking.</p>
+    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I have read the <Link href="/privacy/">Privacy Policy</Link> and agree to be contacted about this enquiry, including by WhatsApp message.</span></label>
+    <button className="v2-button" type="submit" disabled={chosen.length === 0 || sending}>{sending ? "Sending…" : "Send enquiry"} <MessageCircle size={18}/></button>{notice}
+    <p className="v2-form-note">Your answers are sent straight to our WhatsApp. This does not confirm a booking.</p>
   </form>;
 }
 
 export function CompactClientForm({ source }: { source: string }) {
-  function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    data.set("Landing page", source);
-    sendToWhatsapp(data, "Editing Factory — landing page enquiry");
-  }
-  return <form className="v2-form v2-brief-form v2-compact-form" onSubmit={submit}>
-    <p>Share the essentials. We’ll continue the conversation on WhatsApp.</p>
+  const { submit, notice, sending, status, reset } = useEnquiry("Editing Factory — landing page enquiry", { "Landing page": source });
+  if (status === "sent") return <Thanks compact onReset={reset}/>;
+  return <form className="v2-form v2-brief-form v2-compact-form" onSubmit={submit}><Honeypot/>
+    <p>Share the essentials. We’ll reply on WhatsApp.</p>
     <div className="v2-form-row">
       <label>Full name *<input name="Full name" required autoComplete="name" placeholder="Your name"/></label>
       <label>WhatsApp number *<input name="WhatsApp number" required type="tel" autoComplete="tel" placeholder="Include country code"/></label>
     </div>
     <Select label="What do you need? *" name="Service" required options={["Video editing", "Social media videos", "Corporate or brand film", "Event editing", "Complete video production", "Not sure yet"]}/>
     <label>Tell us briefly about the project *<textarea name="Project brief" required rows={3} placeholder="Video type, quantity and preferred delivery date"/></label>
-    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I agree to be contacted about this enquiry and have read the <Link href="/privacy/">Privacy Policy</Link>.</span></label>
-    <button className="v2-button" type="submit">Continue on WhatsApp <MessageCircle size={18}/></button>
+    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I agree to be contacted about this enquiry, including by WhatsApp message, and have read the <Link href="/privacy/">Privacy Policy</Link>.</span></label>
+    <button className="v2-button" type="submit" disabled={sending}>{sending ? "Sending…" : "Send enquiry"} <MessageCircle size={18}/></button>{notice}
   </form>;
 }
 
 export function EditorForm() {
   const [engagement, setEngagement] = useState<string[]>([]);
-  function submit(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); sendToWhatsapp(new FormData(e.currentTarget), "Editing Factory — editor application"); }
-  return <form className="v2-form v2-brief-form" onSubmit={submit}>
+  const { submit, notice, sending, status, reset } = useEnquiry("Editing Factory — editor application", undefined, "editor");
+  if (status === "sent") return <Thanks onReset={() => { reset(); setEngagement([]); }}/>;
+  return <form className="v2-form v2-brief-form" onSubmit={submit}><Honeypot/>
     <div className="v2-form-title"><span>BECOME AN EDITOR</span><span>EF / TEAM</span></div>
     <p>Apply for freelance, full-time or on-site work. Share only samples you are authorised to show.</p>
     <div className="v2-form-step"><span>01</span><strong>Your details</strong></div>
@@ -91,8 +117,8 @@ export function EditorForm() {
     {engagement.length > 0 && <label>Expected rate or salary and availability<textarea name="Rates and schedule" rows={2} placeholder="Hourly/project rate, monthly salary or eight-hour day rate, as relevant"/></label>}
     <div className="v2-form-step"><span>04</span><strong>Review and send</strong></div>
     <label className="v2-consent"><input type="checkbox" name="Declaration" required/><span>My details are accurate and I have correctly described my contribution to each sample.</span></label>
-    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I have read the <Link href="/privacy/">Privacy Policy</Link> and agree to be contacted about my application.</span></label>
-    <button className="v2-button" type="submit" disabled={engagement.length === 0}>Send application on WhatsApp <ArrowDownRight size={18}/></button>
-    <p className="v2-form-note">WhatsApp opens with your answers. Tap Send there to apply. Applications are reviewed privately; submitting does not guarantee work.</p>
+    <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I have read the <Link href="/privacy/">Privacy Policy</Link> and agree to be contacted about my application, including by WhatsApp message.</span></label>
+    <button className="v2-button" type="submit" disabled={engagement.length === 0 || sending}>{sending ? "Sending…" : "Send application"} <ArrowDownRight size={18}/></button>{notice}
+    <p className="v2-form-note">Your application is sent straight to our WhatsApp. Applications are reviewed privately; submitting does not guarantee work.</p>
   </form>;
 }
