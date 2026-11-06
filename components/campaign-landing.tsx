@@ -62,7 +62,7 @@ export function CampaignLanding({ campaign }: { campaign: "NRI" | "Regional" }) 
 
         <section className="campaign-section campaign-packages">
           <div className="campaign-section-head"><span>PACKAGES</span><h2>Start with what<br/><em>fits right now.</em></h2><p>Clear starting points for one video or a complete branded series.</p></div>
-          <div className="campaign-package-grid">{packages.map((item, index) => <article className={item.featured ? "featured" : ""} key={item.name}>{item.featured && <b>POPULAR</b>}<span>0{index + 1} / 06</span><h3>{item.name}</h3><strong>{item.price}</strong><small>{item.unit}</small><p>{item.intro}</p><ul>{item.features.slice(0, 4).map(point => <li key={point}><Check size={15}/>{point}</li>)}</ul><BookButton/></article>)}</div>
+          <div className="campaign-package-grid">{packages.map((item, index) => <article className={item.featured ? "featured" : ""} key={item.name}>{item.featured && <b>POPULAR</b>}<span>0{index + 1} / 06</span><h3>{item.name}</h3><strong>{item.price}</strong><small>{item.unit}</small><p>{item.intro}</p><ul>{item.features.slice(0, 4).map(point => <li key={point}><Check size={15}/>{point}</li>)}</ul><FormActionButton pkg={item.name} className="campaign-book campaign-package-choose">Choose {item.name} <ArrowDownRight size={18}/></FormActionButton></article>)}</div>
         </section>
 
         <section className="campaign-section campaign-about">

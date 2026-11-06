@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { packages } from "@/data/content";
+import { appendToSheet } from "@/lib/sheet";
 import { normalizePhone, packageMenu, sendText, teamMessage, thankYouMessage } from "@/lib/whapi";
 
 const hits = new Map<string, number[]>();
@@ -35,8 +36,11 @@ export async function POST(request: Request) {
   if (lines.length === 0) return NextResponse.json({ ok: false, error: "empty" }, { status: 400 });
 
   const NL = String.fromCharCode(10);
-  const sent = await sendText(to, `*${heading}*${NL}${NL}${lines.join(NL)}`);
-  if (!sent) return NextResponse.json({ ok: false, error: "upstream" }, { status: 502 });
+  const rows = (payload.fields as unknown[]).slice(0, 40).flatMap((entry): [string, string][] =>
+    Array.isArray(entry) && typeof entry[0] === "string" && typeof entry[1] === "string" && entry[1].trim() ? [[entry[0].slice(0, 60), entry[1].slice(0, 2000)]] : []);
+  // Save the lead to the sheet and notify the team on WhatsApp at the same time; either one succeeding is enough.
+  const [saved, sent] = await Promise.all([appendToSheet(payload.kind === "editor" ? "Editing partner" : "Client enquiry", rows), sendText(to, `*${heading}*${NL}${NL}${lines.join(NL)}`)]);
+  if (!saved && !sent) return NextResponse.json({ ok: false, error: "upstream" }, { status: 502 });
 
   // Automated replies to the visitor (best effort: the enquiry itself already reached us).
   const get = (name: string) => (payload.fields as unknown[][]).find(f => f[0] === name)?.[1];

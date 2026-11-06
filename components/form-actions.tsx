@@ -2,32 +2,37 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { ClientForm, CompactClientForm, EditorForm } from "@/components/brief-forms";
+import { ClientForm } from "@/components/brief-forms";
 
-type FormKind = "client" | "editor";
-const FormContext = createContext<(kind: FormKind) => void>(() => {});
+type Open = (pkg?: string) => void;
+const FormContext = createContext<Open>(() => {});
 
 export function FormActionsProvider({ children, compactClientSource }: { children: React.ReactNode; compactClientSource?: string }) {
-  const [form, setForm] = useState<FormKind | null>(null);
+  const [state, setState] = useState<{ open: boolean; pkg: string }>({ open: false, pkg: "" });
   const dialog = useRef<HTMLDialogElement>(null);
+  const close = () => setState(current => ({ ...current, open: false }));
 
   useEffect(() => {
-    if (form && !dialog.current?.open) dialog.current?.showModal();
-    if (!form && dialog.current?.open) dialog.current.close();
-  }, [form]);
+    if (state.open && !dialog.current?.open) dialog.current?.showModal();
+    if (!state.open && dialog.current?.open) dialog.current.close();
+  }, [state.open]);
 
-  return <FormContext.Provider value={setForm}>
+  return <FormContext.Provider value={(pkg = "") => setState({ open: true, pkg })}>
     {children}
-    <dialog ref={dialog} className="v2-action-dialog" aria-label={form === "editor" ? "Editor application" : "Project enquiry"} onCancel={() => setForm(null)} onClick={event => { if (event.target === dialog.current) setForm(null); }}>
+    <dialog ref={dialog} className="v2-action-dialog" aria-label="Project enquiry" onCancel={close} onClick={event => { if (event.target === dialog.current) close(); }}>
       <div className="v2-action-dialog-inner">
-        <div className="v2-action-dialog-head"><div><span>{form === "editor" ? "JOIN THE TEAM" : "START A PROJECT"}</span><h2>{form === "editor" ? "Become an Editor" : "Book an Enquiry"}</h2></div><button type="button" className="v2-dialog-close" onClick={() => setForm(null)} aria-label="Close form"><X size={22}/></button></div>
-        <div className="v2-action-dialog-scroll">{form === "editor" ? <EditorForm/> : form === "client" ? compactClientSource ? <CompactClientForm source={compactClientSource}/> : <ClientForm/> : null}</div>
+        <div className="v2-action-dialog-head"><div><span>START A PROJECT</span><h2>{state.pkg ? `Enquire about ${state.pkg}` : "Book an Enquiry"}</h2></div><button type="button" className="v2-dialog-close" onClick={close} aria-label="Close form"><X size={22}/></button></div>
+        <div className="v2-action-dialog-scroll">{state.open && <ClientForm key={state.pkg} defaultPackage={state.pkg} source={compactClientSource}/>}</div>
       </div>
     </dialog>
   </FormContext.Provider>;
 }
 
-export function FormActionButton({ kind, children, className = "" }: { kind: FormKind; children: React.ReactNode; className?: string }) {
+export function usePackageOpener() {
+  return useContext(FormContext);
+}
+
+export function FormActionButton({ pkg, children, className = "" }: { kind?: "client"; pkg?: string; children: React.ReactNode; className?: string }) {
   const open = useContext(FormContext);
-  return <button type="button" className={className} onClick={() => open(kind)}>{children}</button>;
+  return <button type="button" className={className} onClick={() => open(pkg)}>{children}</button>;
 }
