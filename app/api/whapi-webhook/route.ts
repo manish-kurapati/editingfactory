@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { faqs, fallbackMessage, optionFlows, optionMessage, sendText, welcomeMenu } from "@/lib/whapi";
+import { faqs, fallbackMessage, optionAliases, optionFlows, optionMessage, sendText, welcomeMenu } from "@/lib/whapi";
 
 type Incoming = { from_me?: boolean; from?: string; chat_id?: string; type?: string; text?: { body?: string } };
 
@@ -15,14 +15,20 @@ export async function POST(request: Request) {
     if (!text) continue;
 
     try {
-      const digit = text.match(/^([1-5])[.)]?$/)?.[1];
+      const digit = text.match(/^([1-6])[.)]?$/)?.[1] ?? optionAliases.find(([re]) => re.test(text))?.[1];
       if (digit) {
         await sendText(m.chat_id, optionMessage(digit)!);
         if (owner) await sendText(owner, `*Menu option selected*\n\n+${m.from}: ${digit}. ${optionFlows[digit].title}`);
         continue;
       }
 
-      if (/^(hi|hello|hey|menu|start|help)\b/i.test(text)) {
+      if (/^help$/i.test(text)) {
+        await sendText(m.chat_id, "Of course. Share what you need help with and our team will follow up here.");
+        if (owner) await sendText(owner, `*Customer asked for help*\n\n+${m.from}`);
+        continue;
+      }
+
+      if (/^(hi|hello|hey|menu|start)\b/i.test(text)) {
         await sendText(m.chat_id, welcomeMenu);
         continue;
       }
