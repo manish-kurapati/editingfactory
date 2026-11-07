@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { packages } from "@/data/content";
 import { appendToSheet } from "@/lib/sheet";
-import { normalizePhone, packageMenu, sendText, teamMessage, thankYouMessage } from "@/lib/whapi";
+import { normalizePhone, sendText, thankYouMessage, welcomeMenu } from "@/lib/whapi";
 
 const hits = new Map<string, number[]>();
 function limited(ip: string) {
@@ -48,10 +47,7 @@ export async function POST(request: Request) {
   if (visitor) {
     try {
       await sendText(visitor, thankYouMessage);
-      const chosen = get("Package");
-      const hasPackage = typeof chosen === "string" && packages.some(p => p.name === chosen);
-      if (payload.kind === "editor" || hasPackage) await sendText(visitor, teamMessage);
-      else await sendText(visitor, packageMenu());
+      await sendText(visitor, welcomeMenu);
     } catch {}
   }
   return NextResponse.json({ ok: true });
