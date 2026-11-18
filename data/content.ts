@@ -10,7 +10,7 @@ export const services = [
 export const packages = [
   {
     name: "Factory Cut", eyebrow: "Essential editing", price: "₹9,999", unit: "for 8 videos",
-    intro: "Clean edits. Clear stories.", featured: false,
+    intro: "Clean edits, clear stories", featured: false,
     features: [
       "Eight videos, up to 60 seconds each",
       "Clean cuts, engaging pacing and captions",
@@ -23,7 +23,7 @@ export const packages = [
   },
   {
     name: "Factory Craft", eyebrow: "Branded editing", price: "₹15,999", unit: "for 8 videos",
-    intro: "Your footage. Your brand. More impact.", featured: true,
+    intro: "Your footage, your brand, more impact", featured: true,
     features: [
       "Eight videos, up to 60 seconds each",
       "Everything in Factory Cut",
@@ -49,7 +49,7 @@ export const packages = [
   },
   {
     name: "Factory Originals", eyebrow: "Complete production", price: "Custom quote", unit: "per project",
-    intro: "Concept. Shoot. Edit.", featured: false,
+    intro: "Concept, shoot, edit", featured: false,
     features: [
       "Concept development, scripting and pre-production",
       "Shooting, editing, colour, sound and motion graphics",
@@ -60,7 +60,7 @@ export const packages = [
   },
   {
     name: "Factory On-Site", eyebrow: "Event editing team", price: "From ₹5,999", unit: "per day · two editors",
-    intro: "Your event. Our editors. Content on the spot.", featured: false,
+    intro: "Your event, our editors, content on the spot", featured: false,
     features: [
       "Two editors with laptops ₹5,999/day; three ₹8,999/day; four ₹11,999/day",
       "Minimum booking of two editors; up to eight on-site hours per day",
@@ -72,7 +72,7 @@ export const packages = [
   },
   {
     name: "First Cut", eyebrow: "Single-video trial", price: "From ₹1,499", unit: "per video",
-    intro: "Start with one. Experience the difference.", featured: false,
+    intro: "Start with one, experience the difference", featured: false,
     features: [
       "One Factory Cut video ₹1,499 or Factory Craft video ₹2,499",
       "One video up to 60 seconds; 3, 5 or 10 minute edits quoted separately",

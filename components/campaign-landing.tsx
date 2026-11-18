@@ -53,7 +53,7 @@ export function CampaignLanding({ campaign }: { campaign: "NRI" | "Regional" }) 
           </div>
         </section>
 
-        <div className="campaign-ticker" aria-label="You shoot. We edit."><div>{Array.from({length: 10}).map((_, i) => <span key={i}>YOU SHOOT. <b>WE EDIT.</b> <i>✦</i></span>)}</div></div>
+        <div className="campaign-ticker" aria-label="You shoot. We edit."><div>{Array.from({length: 10}).map((_, i) => <span key={i}>YOU SHOOT. <b>WE EDIT.</b> </span>)}</div></div>
 
         <section className="campaign-section campaign-services">
           <div className="campaign-section-head"><span>WHAT WE DO</span><h2>Your footage.<br/><em>Finished with purpose.</em></h2><p>Editing support for creators, businesses, agencies and production teams—online or on site.</p></div>

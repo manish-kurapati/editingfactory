@@ -49,7 +49,7 @@ export function ClientForm({ defaultPackage = "", source }: { defaultPackage?: s
       <Select label="What do you need? *" name="Service" required options={["Video editing", "On-site editing", ...services.map(s => s.title)]}/>
       <label>Package *<select name="Package" required defaultValue={defaultPackage}><option value="" disabled>Select one</option>{[...packages.map(p => p.name), "Custom project", "Recommend a package"].map(option => <option key={option}>{option}</option>)}</select></label>
     </div>
-    <label>Tell us briefly about the project *<textarea name="Project brief" required rows={3} placeholder="Video type, quantity and preferred delivery date"/></label>
+    <label>Tell us about your requirement *<textarea name="Project brief" required rows={3} placeholder="Video type, quantity and preferred delivery date"/></label>
     <label className="v2-consent"><input type="checkbox" name="consent" required/><span>I agree to be contacted about this enquiry, including by WhatsApp message, and have read the <Link href="/privacy/">Privacy Policy</Link>.</span></label>
     <button className="v2-button" type="submit" disabled={sending}>{sending ? "Sending…" : "Send enquiry"} <MessageCircle size={18}/></button>{notice}
   </form>;
