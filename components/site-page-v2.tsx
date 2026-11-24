@@ -51,6 +51,7 @@ function HomeHero() {
     <div className="v2-hero-shade"/>
     <motion.div className="v2-hero-copy" style={{ y: copyY }}>
       <h1 className="v2-hero-headline"><span className="v2-mask"><motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: .15, duration: 1, ease: easing }}>INDIA’S FIRST</motion.span></span><span className="v2-hero-headline-sub">ON-DEMAND EDITING STUDIO<br/>FOR <em>EVERY STORY.</em></span></h1>
+      <div className="v2-editor-count"><strong>30+</strong><span>PROFESSIONAL<br/>EDITORS</span></div>
       <motion.div className="v2-hero-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .6 }}><CtaLink href="/packages/">Explore Packages</CtaLink><CtaLink href="/contact/" outline>Start a Project</CtaLink></motion.div>
       <div className="v2-hero-tagline">YOU SHOOT. <strong>WE EDIT.</strong></div>
     </motion.div>

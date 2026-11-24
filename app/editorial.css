@@ -632,3 +632,13 @@ body,.v2-hero h1.v2-hero-headline,.v2-hero-tagline,.v2-gold-interlude h2,.v2-sec
 .v2-home-package-body{display:flex;flex-direction:column;flex:1}
 .v2-home-package-body ul{flex:1}
 .v2-home-package-action{margin-top:auto!important}
+/* A brief brand introduction on each new site load. */
+.site-intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#100a16}
+.site-intro img{width:clamp(150px,23vw,220px);height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;box-shadow:0 0 0 1px #ffffff40,0 0 65px #b337ea55;animation:site-intro-arrive .6s ease-out both}
+@keyframes site-intro-arrive{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.v2-editor-count{display:flex;align-items:center;gap:14px;width:max-content;max-width:100%;padding:10px 18px 10px 14px;border:1px solid #ffd400a8;border-radius:12px;background:#100915d9;box-shadow:0 0 22px #be32ed52;color:#fff}
+.v2-editor-count strong{font:700 clamp(34px,4vw,56px)/1 'Barlow Condensed',Arial,sans-serif;color:#ffd400}
+.v2-editor-count span{font-size:clamp(10px,1vw,13px);font-weight:800;letter-spacing:.11em;line-height:1.3}
+.v2-hero .v2-editor-count+.v2-hero-actions{margin-top:20px}
+@media(max-width:600px){.v2-editor-count{padding:8px 12px;gap:10px}.v2-editor-count strong{font-size:37px}.v2-editor-count span{font-size:10px}.v2-hero .v2-editor-count+.v2-hero-actions{margin-top:18px}.v2-hero-copy .v2-hero-tagline{margin-top:clamp(30px,7vh,65px)}}
+@media(prefers-reduced-motion:reduce){.site-intro img{animation:none}}
